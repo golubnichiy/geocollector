@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Поддержка — Geo Collector</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 44rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; color: #11131a;
+  }
+  h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 .25rem; }
+  h2 { font-size: 1.25rem; margin: 2.25rem 0 .5rem; }
+  h3 { font-size: 1.05rem; margin: 1.5rem 0 .35rem; }
+  .meta { color: #8a8f9e; font-size: .9rem; margin: 0 0 2rem; }
+  .contact {
+    background: #e6f0ff; border: 1px solid #0a6cff; border-radius: .75rem;
+    padding: 1rem 1.25rem; margin: 0 0 2rem;
+  }
+  .contact p { margin: .35rem 0; }
+  ul { padding-left: 1.2rem; }
+  li { margin: .4rem 0; }
+  a { color: #0a6cff; }
+  code {
+    font: .9em ui-monospace, Menlo, monospace;
+    background: #f2f2f7; padding: .1em .35em; border-radius: .25rem;
+  }
+  hr { border: 0; border-top: 1px solid #dcdee5; margin: 3.5rem 0 2.5rem; }
+  footer { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid #dcdee5; color: #8a8f9e; font-size: .9rem; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #11131a; color: #e8eaf0; }
+    .contact { background: #15233d; border-color: #2f6fd0; }
+    code { background: #1c1f29; }
+    a { color: #5c9dff; }
+    hr, footer { border-color: #2a2d38; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Поддержка</h1>
+<p class="meta">Geo Collector для iOS</p>
+
+<div class="contact">
+  <p><strong>Написать разработчику:</strong> <a href="mailto:artem@golubnichij.ru">artem@golubnichij.ru</a></p>
+  <p>Если сообщаете о проблеме, укажите версию приложения (её видно на экране «О приложении») и модель устройства.</p>
+</div>
+
+<p>Geo Collector — инструмент для полевого сбора географических точек. Работает офлайн, без регистрации; все данные хранятся на устройстве.</p>
+
+<h2>Частые вопросы</h2>
+
+<h3>Приложение просит доступ к геолокации. Обязательно разрешать?</h3>
+<p>Нет. Без доступа останется ручной ввод координат, карта, список, поиск, фильтры, импорт и экспорт — то есть всё, кроме автоматического определения координат. Разрешение можно выдать позже в «Настройки → Geo Collector → Геопозиция».</p>
+
+<h3>Координаты определяются неточно</h3>
+<p>Точность показана рядом с координатами при создании точки. Нажмите «Обновить координаты», когда значение станет меньше: на открытом месте приёмник уточняет позицию в течение нескольких секунд. Внутри помещений точность обычно хуже.</p>
+
+<h3>Куда делся экспортированный файл?</h3>
+<p>Приложение не хранит экспортированные файлы — оно передаёт их системному меню «Поделиться», а вы выбираете, куда их отправить: «Файлы», iCloud Drive, почта, AirDrop. Если меню закрылось случайно, просто выполните экспорт ещё раз.</p>
+
+<h3>Какие файлы можно импортировать?</h3>
+<p>Файлы <code>.geojson</code> и <code>.json</code> со структурой <code>FeatureCollection</code>. В текущей версии импортируется только геометрия <code>Point</code>; линии и полигоны пропускаются.</p>
+
+<h3>Почему часть объектов пропущена при импорте?</h3>
+<p>Перед записью приложение показывает предпросмотр с причинами: неподдерживаемая геометрия, отсутствующая геометрия, координаты вне допустимого диапазона. Один некорректный объект не прерывает импорт остальных.</p>
+
+<h3>Почему точки не добавились при повторном импорте?</h3>
+<p>Это защита от дублей. Точка считается дубликатом, если в этом же проекте уже есть объект с теми же координатами, названием, описанием, высотой, точностью и набором тегов. Количество таких точек показано в предпросмотре и в итоговом сообщении.</p>
+
+<h3>Карта серая или пустая</h3>
+<p>Картографические изображения загружаются из сети. Офлайн отображаются только ранее загруженные фрагменты; маркеры, координаты, список и экспорт при этом работают.</p>
+
+<h3>В CSV вместо русских букв непонятные символы</h3>
+<p>Файл в UTF-8 с BOM, и Excel открывает его корректно. Если редактор всё же показывает иное, выберите при открытии кодировку UTF-8.</p>
+
+<h3>Как перенести данные на другое устройство?</h3>
+<p>Экспортируйте проект в GeoJSON, передайте файл на второе устройство и импортируйте его там. Сохранятся координаты, названия, описания, теги, высота, точность и даты создания.</p>
+
+<h3>Можно ли восстановить удалённый проект?</h3>
+<p>Нет. Данные хранятся только на устройстве, резервных копий у разработчика не существует. Перед удалением имеет смысл выполнить экспорт.</p>
+
+<h2>Конфиденциальность</h2>
+<p>Приложение не собирает персональные данные. Подробности — в <a href="../privacy/">политике конфиденциальности</a>.</p>
+
+<hr>
+
+<h1 lang="en">Support</h1>
+<p class="meta" lang="en">Geo Collector for iOS</p>
+
+<div class="contact" lang="en">
+  <p><strong>Contact the developer:</strong> <a href="mailto:artem@golubnichij.ru">artem@golubnichij.ru</a></p>
+  <p>When reporting a problem, please include the app version (shown on the About screen) and your device model.</p>
+</div>
+
+<div lang="en">
+
+<p>Geo Collector is a tool for collecting geographic points in the field. It works offline, requires no registration, and keeps all data on the device.</p>
+
+<h2>Frequently asked questions</h2>
+
+<h3>The app asks for location access. Is it required?</h3>
+<p>No. Without it you keep manual coordinate entry, the map, the list, search, filters, import and export — everything except automatic positioning. You can grant access later in Settings → Geo Collector → Location.</p>
+
+<h3>Coordinates are not accurate</h3>
+<p>The accuracy figure is shown next to the coordinates while creating a point. Tap "Обновить координаты" (Refresh coordinates) once the value drops: in the open the receiver refines its position over a few seconds. Indoors accuracy is usually worse.</p>
+
+<h3>Where did the exported file go?</h3>
+<p>The app does not keep exported files — it hands them to the system share sheet and you choose the destination: Files, iCloud Drive, email, AirDrop. If the sheet was dismissed by accident, simply export again.</p>
+
+<h3>Which files can be imported?</h3>
+<p>Files with the <code>.geojson</code> or <code>.json</code> extension containing a <code>FeatureCollection</code>. This version imports <code>Point</code> geometry only; lines and polygons are skipped.</p>
+
+<h3>Why were some objects skipped during import?</h3>
+<p>Before writing anything, the app shows a preview with the reasons: unsupported geometry, missing geometry, or coordinates out of range. One malformed object never aborts the rest of the import.</p>
+
+<h3>Why were no points added when I imported the same file again?</h3>
+<p>That is duplicate protection. A point counts as a duplicate when the same project already holds an object with identical coordinates, name, description, altitude, accuracy and tag set. The number of such points is shown in the preview and in the final message.</p>
+
+<h3>The map is grey or empty</h3>
+<p>Map imagery is loaded from the network. Offline, only previously loaded tiles appear; markers, coordinates, the list and export keep working.</p>
+
+<h3>CSV shows garbled characters instead of Cyrillic</h3>
+<p>The file is UTF-8 with a BOM and opens correctly in Excel. If your editor still shows otherwise, choose UTF-8 encoding when opening it.</p>
+
+<h3>How do I move data to another device?</h3>
+<p>Export the project to GeoJSON, transfer the file to the second device and import it there. Coordinates, names, descriptions, tags, altitude, accuracy and creation dates are preserved.</p>
+
+<h3>Can a deleted project be restored?</h3>
+<p>No. Data lives only on the device and the developer keeps no backups. It is worth exporting before deleting.</p>
+
+<h2>Privacy</h2>
+<p>The app collects no personal data. See the <a href="../privacy/">privacy policy</a> for details.</p>
+
+</div>
+
+<footer>
+  Geo Collector · <a href="../">Главная / Home</a> · <a href="../privacy/">Политика конфиденциальности / Privacy Policy</a>
+</footer>
+</body>
+</html>
